@@ -1,24 +1,35 @@
 <template>
-  <el-menu
-    :default-active="activeIndex2"
-    mode="horizontal"
-  >
-    <el-menu-item index="1" to="/">
-      <nuxt-link to="/">
-        Accueil
-      </nuxt-link>
-    </el-menu-item>
-    <el-menu-item index="2">
-      <nuxt-link to="/products">
-        Produits
-      </nuxt-link>
-    </el-menu-item>
-    <el-menu-item index="3">
-      <nuxt-link to="/basket">
-        Panier
-      </nuxt-link>
-    </el-menu-item>
-  </el-menu>
+  <b-navbar>
+    <template slot="brand">
+      <b-navbar-item tag="router-link" to="/">
+        <img
+          src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+          alt="Lightweight UI components for Vue.js based on Bulma"
+        >
+      </b-navbar-item>
+    </template>
+    <template slot="start">
+      <b-navbar-item tag="router-link" to="/products">
+        Products
+      </b-navbar-item>
+      <b-navbar-item tag="router-link" to="/blog">
+        Blog
+      </b-navbar-item>
+    </template>
+
+    <template slot="end">
+      <b-navbar-item tag="div">
+        <div class="buttons">
+          <a class="button is-primary">
+            <b-icon
+              icon="cart"
+            />
+            <span>{{ cardCount }}</span>
+          </a>
+        </div>
+      </b-navbar-item>
+    </template>
+  </b-navbar>
 </template>
 
 <script>
@@ -30,18 +41,15 @@ export default {
       activeIndex2: '1'
     }
   },
-  methods: {
-    handleSelect (key, keyPath) {
-      // eslint-disable-next-line no-console
-      console.log(key, keyPath)
+  computed: {
+    cardCount () {
+      return this.$store.state.cart.length
     }
+  },
+  methods: {
   }
 }
 </script>
 
 <style scoped>
-
-  a {
-    padding: 2rem 0;
-  }
 </style>

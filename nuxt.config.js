@@ -23,13 +23,11 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -44,7 +42,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'nuxt-shopify'
+    'nuxt-shopify',
+    'nuxt-buefy'
   ],
   /*
   ** Axios module configuration
@@ -53,14 +52,14 @@ export default {
   axios: {
   },
   shopify: {
-    domain: 'my-socket.myshopify.com/', // your shopify domain
-    storefrontAccessToken: '347ec6bae7c59f524600ccf6c83ad23b'// your shopify storefront access token
+    domain: 'my-guitares.myshopify.com/', // your shopify domain
+    storefrontAccessToken: '584f71cdb63bca9d98db7ce872414df2'// your shopify storefront access token
   },
   /*
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [],
     /*
     ** You can extend webpack config here
     */

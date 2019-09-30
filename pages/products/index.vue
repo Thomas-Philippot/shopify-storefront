@@ -1,34 +1,62 @@
 <template>
-  <div class="full-width">
-    <h1>Here are the products</h1>
-    <el-row :gutter="20">
-      <el-col v-for="product in products" :key="product.id" :span="6">
-        <el-card :body-style="{ padding: '0px' }" :header="product.title">
-          <img :src="product.images[0].src" class="image">
-          <div style="padding: 14px;">
-            <div class="description">{{ product.description.substr(0, 150) }}...</div>
-            <div class="bottom">
-              <el-row>
-                <nuxt-link :to="'/products/' + product.handle">
-                  <el-button class="button" round type="primary">
-                    Voir
-                  </el-button>
-                </nuxt-link>
-              </el-row>
+  <div class="columns">
+    <div v-for="product in products" :key="product.id" class="column is-one-third">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img :src="product.images[0].src" :alt="product.images[0].altText">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">
+                {{ product.title }}
+              </p>
+              <p class="subtitle is-6">
+                {{ product.variants[0].price }} €
+              </p>
             </div>
           </div>
-        </el-card>
-      </el-col>
-    </el-row>
+
+          <div class="content">
+            <b-button
+              tag="router-link"
+              :to="'/products/' + product.handle"
+              type="is-primary"
+            >
+              Voir
+            </b-button>
+            <b-button
+              type="is-primary"
+              icon-left="cart"
+              @click="addToCart(product)"
+            >
+              Buy
+            </b-button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import cartMixins from '../../mixins/cartMixins'
+
 export default {
   name: 'Index',
-  async asyncData ({ $shopify }) {
+  mixins: [
+    cartMixins
+  ],
+  computed: {
+    products () {
+      return this.$store.state.products
+    }
+  },
+  async asyncData ({ $shopify, store }) {
     const products = await $shopify.product.fetchAll()
-    return { products }
+    store.commit('setProducts', products)
   }
 }
 </script>

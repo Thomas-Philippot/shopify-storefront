@@ -1,6 +1,6 @@
 <template>
   <div class="full-width">
-    <h1>Welcome to my socket shop</h1>
+    <h1>Welcome to my shop</h1>
   </div>
 </template>
 

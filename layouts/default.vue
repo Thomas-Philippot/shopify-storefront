@@ -1,9 +1,9 @@
 <template>
   <div>
     <the-navbar />
-    <el-container>
+    <div class="container" style="margin-top: 2em">
       <nuxt />
-    </el-container>
+    </div>
   </div>
 </template>
 
@@ -19,9 +19,5 @@ export default {
 <style>
   body {
     margin: 0;
-  }
-
-  .el-container {
-    padding: 1rem 5rem;
   }
 </style>
