@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "nuxt-buefy": "^0.3.15",
+    "nuxt-buefy": "^0.3.16",
     "nuxt-shopify": "^1.4.1"
   },
   "devDependencies": {
