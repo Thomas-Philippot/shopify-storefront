@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.8.0",
     "nuxt": "^2.10.2",
     "nuxt-buefy": "^0.3.19",
-    "nuxt-shopify": "^1.6.0"
+    "nuxt-shopify": "^1.6.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
