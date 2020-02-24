@@ -30,7 +30,7 @@
             <b-button
               type="is-primary"
               icon-left="cart"
-              @click="addToCart(product)"
+              @click="addToCart(product, checkout)"
             >
               Buy
             </b-button>
@@ -49,16 +49,14 @@ export default {
   mixins: [
     cartMixins
   ],
+  async asyncData ({ $shopify, store }) {
+    const products = await $shopify.product.fetchAll()
+    store.commit('setProducts', products)
+  },
   computed: {
     products () {
       return this.$store.state.products
     }
-  },
-  async asyncData ({ $shopify, store }) {
-    const products = await $shopify.product.fetchAll()
-    // eslint-disable-next-line no-console
-    console.log(products)
-    store.commit('setProducts', products)
   }
 }
 </script>

@@ -11,7 +11,7 @@ export const mutations = {
   setCheckout (state, data) {
     state.checkout = data
   },
-  incrementCart (sate, index) {
+  incrementCart (state, index) {
     state.cart[index].count++
   },
   addCart (state, item) {
@@ -27,13 +27,11 @@ export const getters = {
 }
 
 export const actions = {
-  addItemToCart ({ commit, getters }, payload) {
+  addItemToCart ({ commit, getters, state }, payload) {
     return new Promise((resolve) => {
       const element = getters.getCartItem(payload.id)
-      // eslint-disable-next-line no-console
-      console.log(element)
       if (element.length > 0) {
-        commit('incrementCart', payload.id)
+        commit('incrementCart', state.cart.indexOf(element[0]))
       } else {
         commit('addCart', payload)
       }
