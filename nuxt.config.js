@@ -52,8 +52,8 @@ export default {
   axios: {
   },
   shopify: {
-    domain: 'my-guitares.myshopify.com/', // your shopify domain
-    storefrontAccessToken: '584f71cdb63bca9d98db7ce872414df2'// your shopify storefront access token
+    domain: 'home-deco35.myshopify.com/', // your shopify domain
+    storefrontAccessToken: '63f6a2f53bbc44bfc9e40c911bb17a7e'// your shopify storefront access token
   },
   /*
   ** Build configuration

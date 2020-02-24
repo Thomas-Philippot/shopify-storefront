@@ -56,6 +56,8 @@ export default {
   },
   async asyncData ({ $shopify, store }) {
     const products = await $shopify.product.fetchAll()
+    // eslint-disable-next-line no-console
+    console.log(products)
     store.commit('setProducts', products)
   }
 }

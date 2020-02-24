@@ -20,12 +20,12 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary">
+          <nuxt-link to="/basket" class="button is-primary">
             <b-icon
               icon="cart"
             />
             <span>{{ cardCount }}</span>
-          </a>
+          </nuxt-link>
         </div>
       </b-navbar-item>
     </template>
