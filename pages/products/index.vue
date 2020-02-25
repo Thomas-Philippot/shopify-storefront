@@ -25,12 +25,12 @@
               :to="'/products/' + product.handle"
               type="is-primary"
             >
-              Voir
+              See
             </b-button>
             <b-button
               type="is-primary"
               icon-left="cart"
-              @click="addToCart(product, checkout)"
+              @click="addToCart(product.variants[0].id, 1)"
             >
               Buy
             </b-button>

@@ -37,13 +37,11 @@ export default {
   name: 'TheNavbar',
   data () {
     return {
-      activeIndex: '1',
-      activeIndex2: '1'
     }
   },
   computed: {
     cardCount () {
-      return this.$store.state.cart.length
+      return this.$store.state.checkout.lineItems.length
     }
   },
   methods: {

@@ -10,10 +10,12 @@ export default {
     const products = await $shopify.product.fetchAll()
     return { products }
   },
-  created () {
-    this.$shopify.checkout.create().then((checkout) => {
-      this.$store.commit('setCheckout', checkout)
-    })
+  beforeUpdate () {
+    if (typeof this.$store.state.checkout.id === 'undefined') {
+      this.$shopify.checkout.create().then((checkout) => {
+        this.$store.commit('setCheckout', checkout)
+      })
+    }
   }
 }
 </script>
