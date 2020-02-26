@@ -38,9 +38,10 @@
             </div>
             <div class="columns">
               <div class="column">
-                <p class="subtitle">
-                  {{ product.description }}
-                </p>
+                <p
+                  class="subtitle"
+                  v-html="product.descriptionHtml"
+                />
               </div>
             </div>
             <div class="columns">

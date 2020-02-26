@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.11.0",
     "nuxt-buefy": "^0.3.23",
     "nuxt-shopify": "^1.7.1",
+    "sass-loader": "^8.0.2",
     "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {

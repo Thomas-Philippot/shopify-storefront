@@ -1,14 +1,55 @@
 <template>
   <div class="full-width">
-    <h1>Welcome to my shop</h1>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="is-size-2">My home page</h1>
+          <p>ceci est la page d'acceuil, ce texte ne changera pas car c'est une boutique</p>
+        </div>
+      </div>
+    </div>
+    <div
+      v-for="collection in collections"
+      :key="collection.id"
+      class="columns"
+    >
+      <div class="column">
+        <section class="hero is-large is-primary">
+          <div
+            class="hero-body"
+            :style="{
+              backgroundImage: `url(${collection.image.src})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover'
+            }"
+          >
+            <div class="container">
+              <h1 class="title">
+                {{ collection.title }}
+              </h1>
+              <h2 class="subtitle">
+                {{ collection.description }}
+              </h2>
+              <nuxt-link :to="`/collection/${collection.handle}`" class="button is-primary">
+                <span>See</span>
+              </nuxt-link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData ({ $shopify }) {
-    const products = await $shopify.product.fetchAll()
-    return { products }
+  layout: 'noContainer',
+  asyncData ({ $shopify }) {
+    return $shopify.collection.fetchAllWithProducts().then((collections) => {
+      return {
+        collections
+      }
+    })
   },
   beforeUpdate () {
     if (typeof this.$store.state.checkout.id === 'undefined') {
@@ -23,5 +64,9 @@ export default {
 <style>
   .full-width {
     width: 100%;
+  }
+
+  a {
+    color: white;
   }
 </style>
