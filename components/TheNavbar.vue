@@ -1,7 +1,7 @@
 <template>
   <b-navbar>
     <template slot="brand">
-      <b-navbar-item tag="router-link" to="/">
+      <b-navbar-item tag="a" href="/">
         <img
           src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
           alt="Lightweight UI components for Vue.js based on Bulma"
@@ -10,17 +10,27 @@
     </template>
     <template slot="start">
       <b-navbar-item
-        tag="router-link"
+        tag="nuxt-link"
         to="/products"
       >
         Products
       </b-navbar-item>
-      <b-navbar-item
-        tag="router-link"
-        to="/blog"
-      >
-        Blog
-      </b-navbar-item>
+      <b-navbar-dropdown label="Blog">
+        <b-navbar-item
+          tag="a"
+          href="/blog"
+        >
+          All
+        </b-navbar-item>
+        <b-navbar-item
+          v-for="blog in blogs"
+          :key="blog.id"
+          tag="a"
+          :href="`/blog/${blog.handle}`"
+        >
+          {{ blog.title }}
+        </b-navbar-item>
+      </b-navbar-dropdown>
     </template>
 
     <template slot="end">
@@ -41,13 +51,12 @@
 <script>
 export default {
   name: 'TheNavbar',
-  data () {
-    return {
-    }
-  },
   computed: {
     cardCount () {
       return this.$store.state.checkout.lineItems.length
+    },
+    blogs () {
+      return this.$store.state.blogs
     }
   },
   methods: {

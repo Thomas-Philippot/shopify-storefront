@@ -12,7 +12,14 @@
 <script>
 import TheNavbar from '../components/TheNavbar'
 export default {
-  components: { TheNavbar }
+  components: { TheNavbar },
+  asyncData ({ $shopify }) {
+    return $shopify.collection.fetchAllWithProducts().then((collections) => {
+      return {
+        collections
+      }
+    })
+  }
 }
 </script>
 

@@ -8,7 +8,7 @@
 
 <script>
 import cartMixins from '../../mixins/cartMixins'
-import ProductCardList from '../../components/productCardList'
+import ProductCardList from '../../components/ProductCardList'
 
 export default {
   name: 'Index',

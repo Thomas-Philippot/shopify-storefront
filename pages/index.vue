@@ -44,12 +44,29 @@
 <script>
 export default {
   layout: 'noContainer',
-  asyncData ({ $shopify }) {
-    return $shopify.collection.fetchAllWithProducts().then((collections) => {
+  asyncData ({ app }) {
+    return app.$axios.get('https://home-deco35.myshopify.com/admin/api/2020-01/blogs.json', {
+      headers: {
+        'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a'
+      }
+    }).then((response) => {
       return {
-        collections
+        blogs: response.data.blogs
       }
     })
+  },
+  data () {
+    return {
+      collections: []
+    }
+  },
+  created () {
+    this.$shopify.collection.fetchAllWithProducts().then((collections) => {
+      this.collections = collections
+    })
+    this.$store.commit('setBlogs', this.blogs)
+    // eslint-disable-next-line no-console
+    console.log('Blog: ', this.blogs)
   },
   beforeUpdate () {
     if (typeof this.$store.state.checkout.id === 'undefined') {

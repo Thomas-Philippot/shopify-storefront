@@ -25,6 +25,12 @@
           />
         </div>
       </div>
+      <hr class="hr" />
+      <div class="columns">
+        <div class="column">
+          <h2 class="is-2">Products in this collection</h2>
+        </div>
+      </div>
       <div class="columns">
         <div class="column">
           <product-card-list
@@ -37,7 +43,7 @@
 </template>
 
 <script>
-import ProductCardList from '../../../components/productCardList'
+import ProductCardList from '../../../components/ProductCardList'
 export default {
   layout: 'noContainer',
   components: {
