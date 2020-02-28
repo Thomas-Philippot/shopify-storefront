@@ -1,9 +1,9 @@
 <template>
   <div class="app">
     <the-navbar />
-    <div id="content-wrap" class="container" style="margin-top: 2em">
+    <section id="content-wrap" class="section">
       <nuxt />
-    </div>
+    </section>
     <the-footer />
   </div>
 </template>
@@ -29,9 +29,6 @@ export default {
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
   #content-wrap {
     min-height: 100vh;
   }

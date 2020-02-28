@@ -1,7 +1,6 @@
 <template>
   <div class="full-width">
     <div class="container">
-      {{ policy }}
       <div class="columns">
         <div class="column">
           <h1 class="is-size-2">My home page</h1>
@@ -44,23 +43,45 @@
 
 <script>
 export default {
-  layout: 'noContainer',
   asyncData ({ app }) {
-    return app.$axios.get('https://home-deco35.myshopify.com/admin/api/2020-01/blogs.json', {
-      headers: {
-        'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a',
-        'Access-Control-Allow-Origin': '*'
+    return app.$axios({
+      method: 'POST',
+      data: {
+        query: `query {
+              shop {
+                name,
+                description,
+                privacyPolicy {
+                  handle
+                },
+                termsOfService {
+                  handle
+                },
+                refundPolicy {
+                  handle
+                }
+              },
+              blogs(first: 10) {
+                edges {
+                    node {
+                      handle,
+                      title
+                    }
+                  }
+              }
+            }`
       }
     }).then((response) => {
       return {
-        blogs: response.data.blogs
+        description: response.data.data.shop.description,
+        shop: response.data.data.shop,
+        blogs: response.data.data.blogs.edges
       }
     })
   },
   data () {
     return {
-      collections: [],
-      policy: []
+      collections: []
     }
   },
   created () {
@@ -68,7 +89,7 @@ export default {
       this.collections = collections
     })
     this.$store.commit('setBlogs', this.blogs)
-    this.getPolicy()
+    this.$store.commit('setShop', this.shop)
   },
   beforeUpdate () {
     if (typeof this.$store.state.checkout.id === 'undefined') {
@@ -77,20 +98,19 @@ export default {
       })
     }
   },
-  methods: {
-    getPolicy () {
-      this.$axios.get('https://home-deco35.myshopify.com/admin/api/2020-01/blogs.json', {
-        headers: {
-          'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a'
-        }
-      }).then((response) => {
-        this.policy = response.data
-      })
+  head () {
+    return {
+      title: 'Home Page',
+      meta: [
+        { hid: 'description', name: 'description', content: this.description }
+      ]
     }
   }
 }
 </script>
 
 <style>
-
+.card-image {
+  height: 20rem;
+}
 </style>

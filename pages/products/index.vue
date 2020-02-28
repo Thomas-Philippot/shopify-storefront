@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <product-card-list
       :products="products"
     />

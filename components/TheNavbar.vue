@@ -1,7 +1,7 @@
 <template>
   <b-navbar>
     <template slot="brand">
-      <b-navbar-item tag="a" href="/">
+      <b-navbar-item tag="nuxt-link" to="/">
         <img
           src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
           alt="Lightweight UI components for Vue.js based on Bulma"
@@ -17,18 +17,12 @@
       </b-navbar-item>
       <b-navbar-dropdown label="Blog">
         <b-navbar-item
-          tag="a"
-          href="/blog"
-        >
-          All
-        </b-navbar-item>
-        <b-navbar-item
           v-for="blog in blogs"
           :key="blog.id"
-          tag="a"
-          :href="`/blog/${blog.handle}`"
+          tag="nuxt-link"
+          :to="`/blog/${blog.node.handle}`"
         >
-          {{ blog.title }}
+          {{ blog.node.title }}
         </b-navbar-item>
       </b-navbar-dropdown>
     </template>

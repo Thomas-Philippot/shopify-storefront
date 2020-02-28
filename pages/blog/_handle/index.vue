@@ -1,15 +1,101 @@
 <template>
-  <div>
-    <h1>Blog id</h1>
+  <div class="container">
+    <h1>{{ blog.title }}</h1>
+    <div class="columns is-multiline">
+      <div
+        v-for="article in blog.articles.edges"
+        :key="article.node.id"
+        class="column is-full-mobile is-half-tablet is-one-third-desktop"
+      >
+        <nuxt-link :to="`/blog/${blog.handle}/article/${article.node.handle}`">
+          <div class="card">
+            <div class="card-image">
+              <figure v-if="article.node.image !== null">
+                <img
+                  :src="article.node.image.originalSrc"
+                  :alt="article.node.image.altText"
+                >
+              </figure>
+              <figure v-else class="is-flex">
+                <img
+                  src="/img/no-image.jpg"
+                  alt="image-not-found"
+                >
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-4">
+                {{ article.node.title }}
+              </p>
+              <p class="subtitle is-6">{{ article.node.excerpt }}</p>
+              <div class="content">
+                <b-taglist class="is-marginless">
+                  <b-tag
+                    v-for="tag in article.node.tags"
+                    :key="tag"
+                    href="#"
+                    type="is-primary"
+                  >
+                    #{{ tag }}
+                  </b-tag>
+                </b-taglist>
+                <time datetime="2016-1-1">{{ article.node.publishedAt }}</time>
+              </div>
+            </div>
+          </div>
+        </nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Index'
+  name: 'Index',
+  asyncData ({ app, params }) {
+    return app.$axios({
+      method: 'POST',
+      data: {
+        query: `query {
+          blogByHandle (handle:"${params.handle}") {
+            title,
+            handle,
+            articles(first: 250) {
+              edges {
+                node {
+                  id,
+                  title,
+                  handle,
+                  publishedAt,
+                  excerpt,
+                  tags,
+                  image (maxWidth: 768) {
+                    originalSrc,
+                    altText
+                  }
+                }
+              }
+            }
+          }
+        }`
+      }
+    }).then((response) => {
+      return {
+        blog: response.data.data.blogByHandle
+      }
+    })
+  }
 }
 </script>
 
 <style scoped>
-
+  .subtitle {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+  }
+  figure.is-flex {
+    justify-content: center;
+  }
 </style>

@@ -1,4 +1,5 @@
 export const state = () => ({
+  shop: {},
   products: [],
   blogs: [],
   checkout: {
@@ -15,5 +16,8 @@ export const mutations = {
   },
   setBlogs (state, data) {
     state.blogs = data
+  },
+  setShop (state, data) {
+    state.shop = data
   }
 }

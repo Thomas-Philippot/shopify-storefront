@@ -5,11 +5,9 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -49,6 +47,13 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
+  axios: {
+    baseURL: process.env.API_URL,
+    headers: {
+      'X-Shopify-Storefront-Access-Token': process.env.STOREFRONT_ACCESS_TOKEN,
+      Accept: 'application/json'
+    }
+  },
   shopify: {
     domain: process.env.DOMAIN, // your shopify domain
     storefrontAccessToken: process.env.STOREFRONT_ACCESS_TOKEN// your shopify storefront access token

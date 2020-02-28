@@ -27,6 +27,11 @@
           <p class="is-size-5">
             Policy
           </p>
+          <p class="footer-link">
+            <nuxt-link :to="`/policy/${privacyPolicy.handle}`">
+              Privacy Policy
+            </nuxt-link>
+          </p>
         </div>
         <div class="column is-4">
           <p class="is-size-5">
@@ -40,7 +45,12 @@
 
 <script>
 export default {
-  name: 'TheFooter'
+  name: 'TheFooter',
+  computed: {
+    privacyPolicy () {
+      return this.$store.state.shop.privacyPolicy
+    }
+  }
 }
 </script>
 

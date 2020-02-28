@@ -41,9 +41,12 @@ p.footer-link > a:hover {
 @import "~buefy/src/scss/buefy";
 
 
+
+// My custom theme
 .nuxt-link-exact-active {
   border-bottom: 2px solid $primary;
 }
+
 
 ul {
   @extend .list;

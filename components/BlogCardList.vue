@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div v-for="article in articles" :key="article.id" class="column is-one-third">
-      <div class="card">
+      <div class="card rounded">
         <div class="card-image">
           <figure class="image is-4by3">
             <img :src="article.image.src" :alt="product.images[0].altText">
