@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="app">
     <the-navbar />
-    <div>
+    <div id="content-wrap">
       <nuxt />
     </div>
+    <the-footer />
   </div>
 </template>
 
@@ -11,13 +12,14 @@
 </style>
 <script>
 import TheNavbar from '../components/TheNavbar'
+import TheFooter from '../components/TheFooter'
 export default {
-  components: { TheNavbar }
+  components: {
+    TheFooter,
+    TheNavbar
+  }
 }
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
 </style>

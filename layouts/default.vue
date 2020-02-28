@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="app">
     <the-navbar />
-    <div class="container" style="margin-top: 2em">
+    <div id="content-wrap" class="container" style="margin-top: 2em">
       <nuxt />
     </div>
+    <the-footer />
   </div>
 </template>
 
@@ -11,8 +12,12 @@
 </style>
 <script>
 import TheNavbar from '../components/TheNavbar'
+import TheFooter from '../components/TheFooter'
 export default {
-  components: { TheNavbar },
+  components: {
+    TheFooter,
+    TheNavbar
+  },
   asyncData ({ $shopify }) {
     return $shopify.collection.fetchAllWithProducts().then((collections) => {
       return {
@@ -26,5 +31,8 @@ export default {
 <style>
   body {
     margin: 0;
+  }
+  #content-wrap {
+    min-height: 100vh;
   }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="full-width">
     <div class="container">
+      {{ policy }}
       <div class="columns">
         <div class="column">
           <h1 class="is-size-2">My home page</h1>
@@ -47,7 +48,8 @@ export default {
   asyncData ({ app }) {
     return app.$axios.get('https://home-deco35.myshopify.com/admin/api/2020-01/blogs.json', {
       headers: {
-        'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a'
+        'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a',
+        'Access-Control-Allow-Origin': '*'
       }
     }).then((response) => {
       return {
@@ -57,7 +59,8 @@ export default {
   },
   data () {
     return {
-      collections: []
+      collections: [],
+      policy: []
     }
   },
   created () {
@@ -65,8 +68,7 @@ export default {
       this.collections = collections
     })
     this.$store.commit('setBlogs', this.blogs)
-    // eslint-disable-next-line no-console
-    console.log('Blog: ', this.blogs)
+    this.getPolicy()
   },
   beforeUpdate () {
     if (typeof this.$store.state.checkout.id === 'undefined') {
@@ -74,16 +76,21 @@ export default {
         this.$store.commit('setCheckout', checkout)
       })
     }
+  },
+  methods: {
+    getPolicy () {
+      this.$axios.get('https://home-deco35.myshopify.com/admin/api/2020-01/blogs.json', {
+        headers: {
+          'X-Shopify-Access-Token': '99804a726edfba831c6671c3b66f413a'
+        }
+      }).then((response) => {
+        this.policy = response.data
+      })
+    }
   }
 }
 </script>
 
 <style>
-  .full-width {
-    width: 100%;
-  }
 
-  a {
-    color: white;
-  }
 </style>

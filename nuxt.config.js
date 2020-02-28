@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 export default {
   mode: 'universal',
   /*
@@ -49,11 +49,9 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
   shopify: {
-    domain: 'home-deco35.myshopify.com/', // your shopify domain
-    storefrontAccessToken: '63f6a2f53bbc44bfc9e40c911bb17a7e'// your shopify storefront access token
+    domain: process.env.DOMAIN, // your shopify domain
+    storefrontAccessToken: process.env.STOREFRONT_ACCESS_TOKEN// your shopify storefront access token
   },
   /*
   ** Build configuration
