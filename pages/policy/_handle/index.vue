@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Policy id</h1>
+    <h1>Policy</h1>
   </div>
 </template>
 

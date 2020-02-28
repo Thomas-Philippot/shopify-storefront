@@ -47,6 +47,10 @@ p.footer-link > a:hover {
   border-bottom: 2px solid $primary;
 }
 
+.card {
+  border-radius: .6rem;
+  overflow: hidden;
+}
 
 ul {
   @extend .list;

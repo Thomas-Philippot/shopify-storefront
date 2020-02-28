@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column">
           <h1 class="is-size-2">My home page</h1>
-          <p>ceci est la page d'acceuil, ce texte ne changera pas car c'est une boutique</p>
+          <p>This website is for developpement purpose, please don't try to buy something here.</p>
         </div>
       </div>
     </div>
@@ -43,6 +43,7 @@
 
 <script>
 export default {
+  layout: 'noContainer',
   asyncData ({ app }) {
     return app.$axios({
       method: 'POST',

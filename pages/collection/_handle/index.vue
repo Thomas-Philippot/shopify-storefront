@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-primary" style="margin-bottom: 2rem">
+    <section class="hero is-medium is-primary" style="margin-bottom: 2rem">
       <div
         class="hero-body"
         :style="{
@@ -17,27 +17,23 @@
       </div>
     </section>
     <div class="container">
+      <section class="articles">
+        <div class="card article">
+          <div class="card-content">
+            <div class="content article-body">
+              <p v-html="collection.descriptionHtml" />
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="columns">
         <div class="column">
-          <p
-            class="subtitle"
-            v-html="collection.descriptionHtml"
-          />
+          <h2 class="is-size-4">Products in this collection</h2>
         </div>
       </div>
-      <hr class="hr" />
-      <div class="columns">
-        <div class="column">
-          <h2 class="is-2">Products in this collection</h2>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <product-card-list
-            :products="collection.products"
-          />
-        </div>
-      </div>
+      <product-card-list
+        :products="collection.products"
+      />
     </div>
   </div>
 </template>
@@ -60,4 +56,27 @@ export default {
 </script>
 
 <style scoped>
+  .container {
+    margin-bottom: 2.5rem;
+  }
+  .articles {
+    margin: -200px 0 5rem;
+  }
+  .articles .content p {
+    line-height: 1.9;
+    margin: 15px 0;
+  }
+  .media-content {
+    margin-top: 3rem;
+  }
+  .article {
+    margin-top: 6rem;
+  }
+  .article-body {
+    line-height: 1.4;
+    margin: 0 6rem;
+  }
+  .hero-body {
+    height: 500px;
+  }
 </style>
