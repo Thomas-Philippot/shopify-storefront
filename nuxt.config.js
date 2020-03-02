@@ -93,6 +93,13 @@ export default {
                           handle
                         }
                       }
+                    },
+                    collections (first: 250) {
+                      edges {
+                        node {
+                          handle
+                        }
+                      }
                     }
                   }`
         }
