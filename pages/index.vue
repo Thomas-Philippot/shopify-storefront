@@ -51,16 +51,7 @@ export default {
         query: `query {
               shop {
                 name,
-                description,
-                privacyPolicy {
-                  handle
-                },
-                termsOfService {
-                  handle
-                },
-                refundPolicy {
-                  handle
-                }
+                description
               },
               blogs(first: 10) {
                 edges {

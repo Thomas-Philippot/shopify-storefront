@@ -19,7 +19,7 @@
                 <p class="title article-title">{{ article.title }}</p>
                 <div class="tags has-addons level-item">
                   <span class="tag is-rounded is-info">@{{ article.authorV2.name }}</span>
-                  <span class="tag is-rounded">{{ $moment(article.publishedAt).format('DD MMMM Y') }}</span>
+                  <span class="tag is-rounded">{{ $moment(article.publishedAt, $moment.ISO_8601).format('DD MMMM Y') }}</span>
                 </div>
               </div>
             </div>

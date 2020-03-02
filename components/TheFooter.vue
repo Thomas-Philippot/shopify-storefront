@@ -19,7 +19,7 @@
             Policy
           </p>
           <p class="footer-link">
-            <nuxt-link :to="`/policy/${privacyPolicy.handle}`">
+            <nuxt-link to="/policy/privacy-policy">
               Privacy Policy
             </nuxt-link>
           </p>
@@ -36,12 +36,7 @@
 
 <script>
 export default {
-  name: 'TheFooter',
-  computed: {
-    privacyPolicy () {
-      return this.$store.state.shop.privacyPolicy
-    }
-  }
+  name: 'TheFooter'
 }
 </script>
 

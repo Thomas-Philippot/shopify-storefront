@@ -1,4 +1,5 @@
 require('dotenv').config()
+const axios = require("axios")
 export default {
   mode: 'universal',
   /*
@@ -28,7 +29,7 @@ export default {
   */
   plugins: [
     { src: '~/plugins/localStorage.js', ssr: false },
-    { src: '~/plugins/moment', ssr: false }
+    { src: '~/plugins/moment' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,6 +61,62 @@ export default {
   shopify: {
     domain: process.env.DOMAIN, // your shopify domain
     storefrontAccessToken: process.env.STOREFRONT_ACCESS_TOKEN// your shopify storefront access token
+  },
+  generate: {
+    routes () {
+      return axios({
+        url: process.env.API_URL,
+        method: 'POST',
+        headers: {
+          'X-Shopify-Storefront-Access-Token': process.env.STOREFRONT_ACCESS_TOKEN,
+          Accept: 'application/json'
+        },
+        data: {
+          query: `query {
+                    blogs (first: 250) {
+                      edges {
+                        node {
+                          handle,
+                          articles (first: 250) {
+                            edges {
+                              node {
+                                handle
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    products (first: 250) {
+                      edges {
+                        node {
+                          handle
+                        }
+                      }
+                    }
+                  }`
+        }
+      }).then((response) => {
+        const blogRoutes = response.data.data.blogs.edges
+        const productRoutes = response.data.data.products.edges
+        const CollectionRoutes = response.data.data.collections.edges
+        // eslint-disable-next-line no-console
+        console.log(blogRoutes)
+        const res = []
+        blogRoutes.forEach((blog) => {
+          blog.node.articles.edges.forEach((article) => {
+            res.push('/blog/' + blog.node.handle + '/article/' + article.node.handle)
+          })
+        })
+        productRoutes.forEach((product) => {
+          res.push('/products/' + product.node.handle)
+        })
+        CollectionRoutes.forEach((collection) => {
+          res.push('/collection/' + collection.node.handle)
+        })
+        return res
+      })
+    }
   },
   /*
   ** Build configuration
