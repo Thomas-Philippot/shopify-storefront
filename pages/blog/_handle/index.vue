@@ -1,9 +1,17 @@
 <template>
   <div class="container">
-    <h1>{{ blog.title }}</h1>
-    <blog-card-list
-      :blog="blog"
-    />
+    <div class="columns">
+      <div class="column">
+        <h1>{{ blog.title }}</h1>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <blog-card-list
+          :blog="blog"
+        />
+      </div>
+    </div>
   </div>
 </template>
 

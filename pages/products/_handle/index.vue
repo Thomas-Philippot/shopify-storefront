@@ -51,7 +51,7 @@
                 </p>
               </div>
             </div>
-            <div class="columns">
+            <div class="columns is-flex">
               <div class="column is-1">
                 <p>Quantity</p>
               </div>
@@ -104,5 +104,8 @@ export default {
   }
   .al img {
     filter: grayscale(100%);
+  }
+  .columns.is-flex {
+    align-items: center;
   }
 </style>

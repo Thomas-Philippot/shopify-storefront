@@ -1,41 +1,39 @@
 <template>
   <div class="full-width">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <h1 class="is-size-2">My home page</h1>
-          <p>This website is for developpement purpose, please don't try to buy something here.</p>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h1 class="is-size-2">My home page</h1>
+            <p>This website is for developpement purpose, please don't try to buy something here.</p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
     <div
       v-for="collection in collections"
       :key="collection.id"
-      class="columns"
+      class="columns collection-banner"
     >
       <div class="column">
-        <section class="hero is-large is-primary">
-          <div
-            class="hero-body"
-            :style="{
-              backgroundImage: `url(${collection.image.src})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover'
-            }"
-          >
-            <div class="container">
-              <h1 class="title">
-                {{ collection.title }}
-              </h1>
-              <h2 class="subtitle">
-                {{ collection.description }}
-              </h2>
-              <nuxt-link :to="`/collection/${collection.handle}`" class="button is-primary">
-                <span>See</span>
-              </nuxt-link>
+        <nuxt-link :to="`/collection/${collection.handle}`">
+          <section class="hero is-large is-info">
+            <div
+              class="hero-body"
+              :style="{
+                backgroundImage: (collection.image === null) ? '' : `url(${collection.image.src})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover'
+              }"
+            >
+              <div class="container">
+                <h1 class="title is-shadow">
+                  {{ collection.title }}
+                </h1>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -102,7 +100,8 @@ export default {
 </script>
 
 <style>
-.card-image {
-  height: 20rem;
+.collection-banner {
+  margin-bottom: 2rem;
+  margin-top: 2rem !important;
 }
 </style>

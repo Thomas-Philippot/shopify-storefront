@@ -104,12 +104,10 @@ export default {
                   }`
         }
       }).then((response) => {
+        const res = []
         const blogRoutes = response.data.data.blogs.edges
         const productRoutes = response.data.data.products.edges
         const CollectionRoutes = response.data.data.collections.edges
-        // eslint-disable-next-line no-console
-        console.log(blogRoutes)
-        const res = []
         blogRoutes.forEach((blog) => {
           blog.node.articles.edges.forEach((article) => {
             res.push('/blog/' + blog.node.handle + '/article/' + article.node.handle)

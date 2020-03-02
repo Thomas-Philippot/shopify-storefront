@@ -23,6 +23,16 @@
               Privacy Policy
             </nuxt-link>
           </p>
+          <p class="footer-link">
+            <nuxt-link to="/policy/refund-policy">
+              Refund Policy
+            </nuxt-link>
+          </p>
+          <p class="footer-link">
+            <nuxt-link to="/policy/terms-of-service">
+              Terms of service
+            </nuxt-link>
+          </p>
         </div>
         <div class="column is-4">
           <p class="is-size-5">

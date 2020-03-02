@@ -40,7 +40,9 @@ p.footer-link > a:hover {
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-
+.is-shadow {
+  text-shadow: 2px 2px 4px #000000;
+}
 
 // My custom theme
 .nuxt-link-exact-active {

@@ -19,7 +19,7 @@ export default {
       data: {
         query: `query {
                   shop {
-                    privacyPolicy {
+                    refundPolicy {
                       title,
                       body
                     }
@@ -28,7 +28,7 @@ export default {
       }
     }).then((response) => {
       return {
-        policy: response.data.data.shop.privacyPolicy
+        policy: response.data.data.shop.refundPolicy
       }
     })
   }

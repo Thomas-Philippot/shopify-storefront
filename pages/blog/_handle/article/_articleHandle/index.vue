@@ -10,8 +10,8 @@
         }"
       />
     </section>
-    <div class="container">
-      <section class="articles">
+    <section class="articles section">
+      <div class="container">
         <div class="card article">
           <div class="card-content">
             <div class="media">
@@ -28,8 +28,8 @@
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -81,9 +81,13 @@ export default {
   .article {
     margin-top: 6rem;
   }
+  @media screen and (min-width: 768px) {
+    .article-body {
+      margin: 0 6rem;
+    }
+  }
   .article-body {
     line-height: 1.4;
-    margin: 0 6rem;
   }
   .hero-body {
     height: 500px;
