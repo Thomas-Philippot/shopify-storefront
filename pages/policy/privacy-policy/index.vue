@@ -31,6 +31,11 @@ export default {
         policy: response.data.data.shop.privacyPolicy
       }
     })
+  },
+  head () {
+    return {
+      title: 'Privacy Policy'
+    }
   }
 }
 </script>

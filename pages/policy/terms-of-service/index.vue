@@ -31,6 +31,11 @@ export default {
         policy: response.data.data.shop.termsOfService
       }
     })
+  },
+  head () {
+    return {
+      title: 'Terms of services'
+    }
   }
 }
 </script>

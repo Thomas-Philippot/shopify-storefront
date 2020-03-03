@@ -50,6 +50,10 @@ export default {
                       authorV2 {
                         name
                       },
+                      seo {
+                        title,
+                        description
+                      }
                       image (maxWidth: 2000) {
                         altText,
                         originalSrc
@@ -63,6 +67,14 @@ export default {
         article: response.data.data.blogByHandle.articleByHandle
       }
     })
+  },
+  head () {
+    return {
+      title: this.article.seo.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.article.seo.description }
+      ]
+    }
   }
 }
 </script>

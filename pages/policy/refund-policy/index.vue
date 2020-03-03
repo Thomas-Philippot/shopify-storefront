@@ -31,6 +31,11 @@ export default {
         policy: response.data.data.shop.refundPolicy
       }
     })
+  },
+  head () {
+    return {
+      title: 'Refund Policy'
+    }
   }
 }
 </script>

@@ -54,6 +54,11 @@ export default {
         blog: response.data.data.blogByHandle
       }
     })
+  },
+  head () {
+    return {
+      title: this.$store.state.shop.name + ' | ' + this.blog.title
+    }
   }
 }
 </script>

@@ -94,6 +94,14 @@ export default {
       product: {},
       quantity: 1
     }
+  },
+  head () {
+    return {
+      title: this.$store.state.shop.name + ' | ' + this.product.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.product.description }
+      ]
+    }
   }
 }
 </script>

@@ -109,6 +109,7 @@ export default {
         const productRoutes = response.data.data.products.edges
         const CollectionRoutes = response.data.data.collections.edges
         blogRoutes.forEach((blog) => {
+          res.push('/blog/' + blog.node.handle)
           blog.node.articles.edges.forEach((article) => {
             res.push('/blog/' + blog.node.handle + '/article/' + article.node.handle)
           })

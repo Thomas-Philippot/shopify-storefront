@@ -90,7 +90,7 @@ export default {
   },
   head () {
     return {
-      title: 'Home Page',
+      title: this.shop.name,
       meta: [
         { hid: 'description', name: 'description', content: this.description }
       ]
