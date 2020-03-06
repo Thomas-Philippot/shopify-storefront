@@ -1,55 +1,57 @@
 <template>
-  <div class="columns">
-    <div v-for="article in articles" :key="article.id" class="column is-one-third">
-      <div class="card rounded">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img :src="article.image.src" :alt="product.images[0].altText">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4">
-                {{ product.title }}
-              </p>
-              <p class="subtitle is-6">
-                {{ product.variants[0].price }} €
-              </p>
+  <div class="columns is-multiline">
+    <div
+      v-for="article in blog.articles.edges"
+      :key="article.node.id"
+      class="column is-full-mobile is-half-tablet is-one-third-desktop"
+    >
+      <nuxt-link :to="`/blog/${blog.handle}/article/${article.node.handle}`">
+        <div class="card">
+          <div class="card-image">
+            <figure v-if="article.node.image !== null">
+              <img
+                :src="article.node.image.originalSrc"
+                :alt="article.node.image.altText"
+              >
+            </figure>
+            <figure v-else class="is-flex">
+              <img
+                src="/img/no-image.jpg"
+                alt="image-not-found"
+              >
+            </figure>
+          </div>
+          <div class="card-content">
+            <p class="title is-4">
+              {{ article.node.title }}
+            </p>
+            <p class="subtitle is-6">{{ article.node.excerpt }}</p>
+            <div class="content">
+              <b-taglist class="is-marginless">
+                <b-tag
+                  v-for="tag in article.node.tags"
+                  :key="tag"
+                  href="#"
+                  type="is-primary"
+                >
+                  #{{ tag }}
+                </b-tag>
+              </b-taglist>
+              <time datetime="2016-1-1">{{ article.node.publishedAt }}</time>
             </div>
           </div>
-
-          <div class="content">
-            <b-button
-              tag="router-link"
-              :to="'/products/' + product.handle"
-              type="is-primary"
-            >
-              See
-            </b-button>
-            <b-button
-              type="is-primary"
-              icon-left="cart"
-              @click="addToCart(product.variants[0].id, 1)"
-            >
-              Buy
-            </b-button>
-          </div>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import cartMixins from '../mixins/cartMixins'
-
 export default {
-  name: 'ProductCardList',
-  mixins: [cartMixins],
+  name: 'BlogCardList',
   props: {
-    products: {
-      type: Array,
+    blog: {
+      type: Object,
       required: true
     }
   }
@@ -57,5 +59,13 @@ export default {
 </script>
 
 <style scoped>
-
+  .subtitle {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+  }
+  figure.is-flex {
+    justify-content: center;
+  }
 </style>

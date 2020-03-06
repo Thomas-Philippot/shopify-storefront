@@ -26,6 +26,11 @@ export default {
     products () {
       return this.$store.state.products
     }
+  },
+  head () {
+    return {
+      title: this.$store.state.shop.name + ' | ' + 'Products'
+    }
   }
 }
 </script>

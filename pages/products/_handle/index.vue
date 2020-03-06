@@ -51,7 +51,7 @@
                 </p>
               </div>
             </div>
-            <div class="columns">
+            <div class="columns is-flex">
               <div class="column is-1">
                 <p>Quantity</p>
               </div>
@@ -94,6 +94,14 @@ export default {
       product: {},
       quantity: 1
     }
+  },
+  head () {
+    return {
+      title: this.$store.state.shop.name + ' | ' + this.product.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.product.description }
+      ]
+    }
   }
 }
 </script>
@@ -104,5 +112,8 @@ export default {
   }
   .al img {
     filter: grayscale(100%);
+  }
+  .columns.is-flex {
+    align-items: center;
   }
 </style>

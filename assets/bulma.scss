@@ -40,13 +40,19 @@ p.footer-link > a:hover {
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-
+.is-shadow {
+  text-shadow: 2px 2px 4px #000000;
+}
 
 // My custom theme
 .nuxt-link-exact-active {
   border-bottom: 2px solid $primary;
 }
 
+.card {
+  border-radius: .6rem;
+  overflow: hidden;
+}
 
 ul {
   @extend .list;
