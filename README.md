@@ -20,3 +20,13 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Configuration
+
+Simply register these variable in a .env file
+
+```dotenv
+DOMAIN=<your-store.myshopify.com/>
+STOREFRONT_ACCESS_TOKEN=<SHOPIFY STOREFRONT API ACCESS TOKEN>
+API_URL=https://<DOMAIN>/api/2020-01/graphql
+```
