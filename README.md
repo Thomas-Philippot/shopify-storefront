@@ -1,6 +1,6 @@
-# my-sockets
+# Shopify Storefront
 
-> My premium Nuxt.js project
+> Nuxt js front-end integration for shopify store
 
 ## Build Setup
 
