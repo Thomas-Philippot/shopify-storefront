@@ -20,7 +20,7 @@
     "nuxt-buefy": "^0.3.23",
     "nuxt-shopify": "^1.8.0",
     "sass-loader": "^8.0.2",
-    "vuex-persistedstate": "^2.7.1"
+    "vuex-persistedstate": "^3.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",
