@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
     "dotenv": "^8.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.25.1",
     "node-sass": "^4.13.1",
     "nuxt": "^2.11.0",
     "nuxt-buefy": "^0.3.23",
