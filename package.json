@@ -19,7 +19,7 @@
     "nuxt": "^2.13.3",
     "nuxt-buefy": "^0.3.31",
     "nuxt-shopify": "^1.10.1",
-    "sass-loader": "^9.0.3",
+    "sass-loader": "^10.0.2",
     "vuex-persistedstate": "^3.0.1"
   },
   "devDependencies": {
