@@ -17,7 +17,7 @@
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "nuxt": "^2.14.6",
-    "nuxt-buefy": "^0.3.31",
+    "nuxt-buefy": "^0.4.3",
     "nuxt-shopify": "^1.10.4",
     "sass-loader": "^10.0.3",
     "vuex-persistedstate": "^3.1.0"
