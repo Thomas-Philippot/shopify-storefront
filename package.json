@@ -16,7 +16,7 @@
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
-    "nuxt": "^2.13.3",
+    "nuxt": "^2.14.6",
     "nuxt-buefy": "^0.3.31",
     "nuxt-shopify": "^1.10.4",
     "sass-loader": "^10.0.3",
