@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+    timezone: Europe/Paris
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: nuxt-buefy
+    versions:
+    - 0.4.4
+    - 0.4.5
+    - 0.4.6
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: nuxt
+    versions:
+    - 2.14.12
+    - 2.15.0
+    - 2.15.1
+    - 2.15.3
+  - dependency-name: "@nuxtjs/axios"
+    versions:
+    - 5.12.5
+    - 5.13.0
+    - 5.13.1
