@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.3",
     "nuxt": "^2.15.7",
     "nuxt-buefy": "^0.3.31",
     "nuxt-shopify": "^1.10.11",
